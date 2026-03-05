@@ -8,16 +8,16 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
 
 public class Robot extends TimedRobot {
-  private static final double DPAD_SPEED = 0.8;
+  private static final double DPAD_SPEED = 0.6;
 
   private final DifferentialDrive m_robotDrive;
   private final PS4Controller m_controller = new PS4Controller(0);
 
-  private final PWMSparkMax m_leftMotor1  = new PWMSparkMax(0);
-  private final PWMSparkMax m_leftMotor2  = new PWMSparkMax(2);
+  private final PWMSparkMax m_leftMotor1  = new PWMSparkMax(1);
+  private final PWMSparkMax m_leftMotor2  = new PWMSparkMax(3);
 
-  private final PWMSparkMax m_rightMotor1 = new PWMSparkMax(1);
-  private final PWMSparkMax m_rightMotor2 = new PWMSparkMax(3);
+  private final PWMSparkMax m_rightMotor1 = new PWMSparkMax(0);
+  private final PWMSparkMax m_rightMotor2 = new PWMSparkMax(2);
 
   private final MotorControllerGroup m_leftGroup  =
       new MotorControllerGroup(m_leftMotor1, m_leftMotor2);
@@ -26,8 +26,9 @@ public class Robot extends TimedRobot {
 
   public Robot() {
     m_leftMotor1.setInverted(true);
+    m_leftMotor2.setInverted(true);
     m_rightMotor1.setInverted(true);
-    m_rightMotor2.setInverted(true);
+    // m_rightMotor2.setInverted(true);
 
     m_robotDrive = new DifferentialDrive(m_leftGroup::set, m_rightGroup::set);
 
